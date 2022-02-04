@@ -23,7 +23,7 @@ jobs:
       - name: Install system deps for ubuntu
         if: matrix.os == 'ubuntu-latest'
         run: |
-          apt install -y gnome-keyring
+          sudo apt install -y gnome-keyring
           echo 'somerandompass' | gnome-keyring-daemon --unlock
 
       - name: Install mamba
