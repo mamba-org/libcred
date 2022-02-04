@@ -181,18 +181,18 @@ char *keychain_list(char *credsLabel, char *** paths, char *** accts, unsigned i
             memcpy((*accts)[i], acct, sizeof(char)*(strlen(acct)));
             continue;
         }
-        
+
         CFMutableStringRef str = CFStringCreateMutableCopy(NULL, 0, protocolTmp);
         CFStringRef serverTmp = CFDictionaryGetValue(currKey, CFSTR("srvr"));
         if (serverTmp != NULL) {
             CFStringAppend(str, serverTmp);
         }
-        
+
         CFStringRef pathTmp = CFDictionaryGetValue(currKey, CFSTR("path"));
         if (pathTmp != NULL) {
             CFStringAppend(str, pathTmp);
         }
-        
+
         const NSNumber * portTmp = CFDictionaryGetValue(currKey, CFSTR("port"));
         if (portTmp != NULL && portTmp.integerValue != 0) {
             CFStringRef portStr = CFStringCreateWithFormat(NULL, NULL, CFSTR("%@"), portTmp);
@@ -200,7 +200,7 @@ char *keychain_list(char *credsLabel, char *** paths, char *** accts, unsigned i
             CFStringAppend(str, portStr);
             CFRelease(portStr);
         }
-        
+
         CFStringRef acctTmp = CFDictionaryGetValue(currKey, CFSTR("acct"));
         if (acctTmp == NULL) {
             acctTmp = CFSTR("account not defined");

@@ -4,7 +4,7 @@ lib_sources = ['osxkeychain_darwin.c']
 
 apple_deps = dependency('appleframeworks', modules : ['CoreFoundation', 'Security'])
 
-zcklib = library('credhelper',
+credhelperlib = library('credhelper',
                 lib_sources,
                 c_args: [
                     '-ObjC',
