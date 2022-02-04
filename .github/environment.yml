@@ -4,4 +4,4 @@ channels:
 dependencies:
   - meson
   - ninja
-  - sel(linux): 
+  - sel(linux): libsecret
