@@ -23,7 +23,7 @@ jobs:
       - name: Install system deps for ubuntu
         if: matrix.os == 'ubuntu-latest'
         run: |
-          sudo apt install -y gnome-keyring
+          sudo apt install -y gnome-keyring dbus-x11
           echo 'somerandompass' | gnome-keyring-daemon --unlock
 
       - name: Install mamba
@@ -34,6 +34,9 @@ jobs:
       - name: Build
         shell: bash -l {0}
         run: |
+          if [[ ${{ matrix.os }} == 'ubuntu-latest' ]]; then
+            export $(dbus-launch)
+          fi
           meson setup builddir
           ninja -C builddir
 
