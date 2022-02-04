@@ -41,8 +41,8 @@ test_non_existent_find()
     if (!(test))                                                                                   \
     {                                                                                              \
         std::cout << msg << ": " << errStr << std::endl;                                           \
-    //exit(1);                         \
-}
+        exit(1);                                                                                   \
+    }
 
 
 // Make sure the standard add/get/find/delete
