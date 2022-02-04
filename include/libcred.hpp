@@ -14,25 +14,39 @@ enum LIBCRED_RESULT {
   FAIL_NONFATAL
 };
 
-LIBCRED_RESULT SetPassword(const std::string& service,
+#ifdef _WIN32
+    #ifdef LIBCRED_STATIC_LIB
+        #define LIBCRED_PUBLIC_API
+    #else
+        #ifdef LIBCRED_EXPORTS
+            #define LIBCRED_PUBLIC_API __declspec(dllexport)
+        #else
+            #define LIBCRED_PUBLIC_API __declspec(dllimport)
+        #endif
+    #endif
+#else
+  #define LIBCRED_PUBLIC_API
+#endif
+
+LIBCRED_PUBLIC_API LIBCRED_RESULT SetPassword(const std::string& service,
                              const std::string& account,
                              const std::string& password,
                              std::string* error);
 
-LIBCRED_RESULT GetPassword(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT GetPassword(const std::string& service,
                              const std::string& account,
                              std::string* password,
                              std::string* error);
 
-LIBCRED_RESULT DeletePassword(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT DeletePassword(const std::string& service,
                                 const std::string& account,
                                 std::string* error);
 
-LIBCRED_RESULT FindPassword(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT FindPassword(const std::string& service,
                               std::string* password,
                               std::string* error);
 
-LIBCRED_RESULT FindCredentials(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT FindCredentials(const std::string& service,
                                  std::vector<Credentials>*,
                                  std::string* error);
 

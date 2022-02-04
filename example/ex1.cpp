@@ -7,7 +7,7 @@ int main()
 {
 	std::string err;
 	int res = libcred::SetPassword("myservice", "myaccount", "thisistopsecret", &err);
-	
+
 	switch (res)
 	{
 	case LIBCRED_RESULT::SUCCESS:

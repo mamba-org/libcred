@@ -5,8 +5,6 @@
 #include <windows.h>
 #include <wincred.h>
 
-#include "credentials.h"
-
 namespace libcred {
 
 LPWSTR utf8ToWideChar(std::string utf8) {
@@ -113,7 +111,7 @@ std::string getErrorMessage(DWORD errorCode) {
   return errMsg;
 }
 
-LIBCRED_RESULT SetPassword(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT SetPassword(const std::string& service,
                  const std::string& account,
                  const std::string& password,
                  std::string* errStr) {
@@ -145,7 +143,7 @@ LIBCRED_RESULT SetPassword(const std::string& service,
   }
 }
 
-LIBCRED_RESULT GetPassword(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT GetPassword(const std::string& service,
                  const std::string& account,
                  std::string* password,
                  std::string* errStr) {
@@ -173,7 +171,7 @@ LIBCRED_RESULT GetPassword(const std::string& service,
   return SUCCESS;
 }
 
-LIBCRED_RESULT DeletePassword(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT DeletePassword(const std::string& service,
                     const std::string& account,
                     std::string* errStr) {
   LPWSTR target_name = utf8ToWideChar(service + '/' + account);
@@ -196,7 +194,7 @@ LIBCRED_RESULT DeletePassword(const std::string& service,
   return SUCCESS;
 }
 
-LIBCRED_RESULT FindPassword(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT FindPassword(const std::string& service,
                   std::string* password,
                   std::string* errStr) {
   LPWSTR filter = utf8ToWideChar(service + "*");
@@ -224,7 +222,7 @@ LIBCRED_RESULT FindPassword(const std::string& service,
   return SUCCESS;
 }
 
-LIBCRED_RESULT FindCredentials(const std::string& service,
+LIBCRED_PUBLIC_API LIBCRED_RESULT FindCredentials(const std::string& service,
                                  std::vector<Credentials>* credentials,
                                  std::string* errStr) {
   LPWSTR filter = utf8ToWideChar(service + "*");
@@ -267,6 +265,4 @@ LIBCRED_RESULT FindCredentials(const std::string& service,
 
   return SUCCESS;
 }
-
-
 }  // namespace keytar
