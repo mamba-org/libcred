@@ -9,13 +9,14 @@
 // Required MinUnit definitions
 int tests_run = 0;
 
-// Make sure GetPassword doesn't succeed for a non-existent service/account
+// Make sure get_password doesn't succeed for a non-existent service/account
 void
 test_non_existent_get()
 {
     std::string password;
     std::string errStr;
-    if (libcred::GetPassword("libcred-bad-password", "libcred-test-bad-account", &password, &errStr)
+    if (libcred::get_password(
+            "libcred-bad-password", "libcred-test-bad-account", &password, &errStr)
         == libcred::FAIL_ERROR)
     {
         std::cout << "Expected non fatal fail for getting nonexistent password" << std::endl;
@@ -23,12 +24,12 @@ test_non_existent_get()
     };
 }
 
-// Make sure FindPassword doesn't succeed for a non-existent service
+// Make sure find_password doesn't succeed for a non-existent service
 void
 test_non_existent_find()
 {
     std::string password, errStr;
-    if (libcred::FindPassword("libcred-test-bad-service", &password, &errStr)
+    if (libcred::find_password("libcred-test-bad-service", &password, &errStr)
         == libcred::FAIL_ERROR)
     {
         std::cout << "Expected non fatal fail for nonexistent find password" << std::endl;
@@ -59,12 +60,12 @@ test_password_lifecycle()
     std::string password_retrieved;
     std::string errStr;
     // Try to add a password
-    TEST_ASSERT("error: setpassword didnt succeed",
-                libcred::SetPassword(service, account, password, &errStr) == libcred::SUCCESS);
+    TEST_ASSERT("error: set_password didnt succeed",
+                libcred::set_password(service, account, password, &errStr) == libcred::SUCCESS);
 
     // // Try to get the password
     TEST_ASSERT("error: unable to get password",
-                libcred::GetPassword(service, account, &password_retrieved, &errStr)
+                libcred::get_password(service, account, &password_retrieved, &errStr)
                     == libcred::SUCCESS);
 
     TEST_ASSERT("error: retrieved password doesn't match password stored",
@@ -72,23 +73,23 @@ test_password_lifecycle()
 
     // Try to find the password
     TEST_ASSERT("error: unable to find password",
-                libcred::FindPassword(service, &password_retrieved, &errStr) == libcred::SUCCESS);
+                libcred::find_password(service, &password_retrieved, &errStr) == libcred::SUCCESS);
     TEST_ASSERT("error: found password doesn't match password stored",
                 password_retrieved == password);
 
     // Try to replace the password
     TEST_ASSERT("error: unable to replace password",
-                libcred::SetPassword(service, account, alternate_password, &errStr)
+                libcred::set_password(service, account, alternate_password, &errStr)
                     == libcred::SUCCESS);
     TEST_ASSERT("error: unable to get replaced password",
-                libcred::GetPassword(service, account, &password_retrieved, &errStr)
+                libcred::get_password(service, account, &password_retrieved, &errStr)
                     == libcred::SUCCESS);
     TEST_ASSERT("error: retrieved password doesn't match new password",
                 password_retrieved == alternate_password);
 
     // Try to delete the password
     TEST_ASSERT("error: unable to delete password",
-                libcred::DeletePassword(service, account, &errStr) == libcred::SUCCESS);
+                libcred::delete_password(service, account, &errStr) == libcred::SUCCESS);
 }
 
 // Test registry

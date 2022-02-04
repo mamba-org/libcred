@@ -7,7 +7,7 @@ int
 main()
 {
     std::string err;
-    int res = libcred::SetPassword("myservice", "myaccount", "thisistopsecret", &err);
+    int res = libcred::set_password("myservice", "myaccount", "thisistopsecret", &err);
 
     switch (res)
     {

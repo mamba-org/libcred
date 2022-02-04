@@ -30,27 +30,27 @@ namespace libcred
 #define LIBCRED_PUBLIC_API
 #endif
 
-    LIBCRED_PUBLIC_API LIBCRED_RESULT SetPassword(const std::string& service,
-                                                  const std::string& account,
-                                                  const std::string& password,
-                                                  std::string* error);
+    LIBCRED_PUBLIC_API LIBCRED_RESULT set_password(const std::string& service,
+                                                   const std::string& account,
+                                                   const std::string& password,
+                                                   std::string* error);
 
-    LIBCRED_PUBLIC_API LIBCRED_RESULT GetPassword(const std::string& service,
-                                                  const std::string& account,
-                                                  std::string* password,
-                                                  std::string* error);
-
-    LIBCRED_PUBLIC_API LIBCRED_RESULT DeletePassword(const std::string& service,
-                                                     const std::string& account,
-                                                     std::string* error);
-
-    LIBCRED_PUBLIC_API LIBCRED_RESULT FindPassword(const std::string& service,
+    LIBCRED_PUBLIC_API LIBCRED_RESULT get_password(const std::string& service,
+                                                   const std::string& account,
                                                    std::string* password,
                                                    std::string* error);
 
-    LIBCRED_PUBLIC_API LIBCRED_RESULT FindCredentials(const std::string& service,
-                                                      std::vector<Credentials>*,
+    LIBCRED_PUBLIC_API LIBCRED_RESULT delete_password(const std::string& service,
+                                                      const std::string& account,
                                                       std::string* error);
+
+    LIBCRED_PUBLIC_API LIBCRED_RESULT find_password(const std::string& service,
+                                                    std::string* password,
+                                                    std::string* error);
+
+    LIBCRED_PUBLIC_API LIBCRED_RESULT find_credentials(const std::string& service,
+                                                       std::vector<Credentials>*,
+                                                       std::string* error);
 
 }  // namespace keytar
 

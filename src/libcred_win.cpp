@@ -91,10 +91,10 @@ namespace libcred
         return errMsg;
     }
 
-    LIBCRED_PUBLIC_API LIBCRED_RESULT SetPassword(const std::string& service,
-                                                  const std::string& account,
-                                                  const std::string& password,
-                                                  std::string* errStr)
+    LIBCRED_PUBLIC_API LIBCRED_RESULT set_password(const std::string& service,
+                                                   const std::string& account,
+                                                   const std::string& password,
+                                                   std::string* errStr)
     {
         LPWSTR target_name = utf8ToWideChar(service + '/' + account);
         if (target_name == NULL)
@@ -129,10 +129,10 @@ namespace libcred
         }
     }
 
-    LIBCRED_PUBLIC_API LIBCRED_RESULT GetPassword(const std::string& service,
-                                                  const std::string& account,
-                                                  std::string* password,
-                                                  std::string* errStr)
+    LIBCRED_PUBLIC_API LIBCRED_RESULT get_password(const std::string& service,
+                                                   const std::string& account,
+                                                   std::string* password,
+                                                   std::string* errStr)
     {
         LPWSTR target_name = utf8ToWideChar(service + '/' + account);
         if (target_name == NULL)
@@ -163,9 +163,9 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_PUBLIC_API LIBCRED_RESULT DeletePassword(const std::string& service,
-                                                     const std::string& account,
-                                                     std::string* errStr)
+    LIBCRED_PUBLIC_API LIBCRED_RESULT delete_password(const std::string& service,
+                                                      const std::string& account,
+                                                      std::string* errStr)
     {
         LPWSTR target_name = utf8ToWideChar(service + '/' + account);
         if (target_name == NULL)
@@ -192,9 +192,9 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_PUBLIC_API LIBCRED_RESULT FindPassword(const std::string& service,
-                                                   std::string* password,
-                                                   std::string* errStr)
+    LIBCRED_PUBLIC_API LIBCRED_RESULT find_password(const std::string& service,
+                                                    std::string* password,
+                                                    std::string* errStr)
     {
         LPWSTR filter = utf8ToWideChar(service + "*");
         if (filter == NULL)
@@ -226,9 +226,9 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_PUBLIC_API LIBCRED_RESULT FindCredentials(const std::string& service,
-                                                      std::vector<Credentials>* credentials,
-                                                      std::string* errStr)
+    LIBCRED_PUBLIC_API LIBCRED_RESULT find_credentials(const std::string& service,
+                                                       std::vector<Credentials>* credentials,
+                                                       std::string* errStr)
     {
         LPWSTR filter = utf8ToWideChar(service + "*");
         if (filter == NULL)

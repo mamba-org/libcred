@@ -81,10 +81,10 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_RESULT SetPassword(const std::string& service,
-                               const std::string& account,
-                               const std::string& password,
-                               std::string* error)
+    LIBCRED_RESULT set_password(const std::string& service,
+                                const std::string& account,
+                                const std::string& password,
+                                std::string* error)
     {
         SecKeychainItemRef item;
         OSStatus result = SecKeychainFindGenericPassword(NULL,
@@ -118,10 +118,10 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_RESULT GetPassword(const std::string& service,
-                               const std::string& account,
-                               std::string* password,
-                               std::string* error)
+    LIBCRED_RESULT get_password(const std::string& service,
+                                const std::string& account,
+                                std::string* password,
+                                std::string* error)
     {
         void* data;
         UInt32 length;
@@ -149,9 +149,9 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_RESULT DeletePassword(const std::string& service,
-                                  const std::string& account,
-                                  std::string* error)
+    LIBCRED_RESULT delete_password(const std::string& service,
+                                   const std::string& account,
+                                   std::string* error)
     {
         SecKeychainItemRef item;
         OSStatus status = SecKeychainFindGenericPassword(NULL,
@@ -184,9 +184,9 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_RESULT FindPassword(const std::string& service,
-                                std::string* password,
-                                std::string* error)
+    LIBCRED_RESULT find_password(const std::string& service,
+                                 std::string* password,
+                                 std::string* error)
     {
         SecKeychainItemRef item;
         void* data;
@@ -251,9 +251,9 @@ namespace libcred
         return cred;
     }
 
-    LIBCRED_RESULT FindCredentials(const std::string& service,
-                                   std::vector<Credentials>* credentials,
-                                   std::string* error)
+    LIBCRED_RESULT find_credentials(const std::string& service,
+                                    std::vector<Credentials>* credentials,
+                                    std::string* error)
     {
         CFStringRef serviceStr
             = CFStringCreateWithCString(NULL, service.c_str(), kCFStringEncodingUTF8);

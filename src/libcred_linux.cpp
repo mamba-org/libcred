@@ -20,10 +20,10 @@ namespace libcred
 
     }  // namespace
 
-    LIBCRED_RESULT SetPassword(const std::string& service,
-                               const std::string& account,
-                               const std::string& password,
-                               std::string* errStr)
+    LIBCRED_RESULT set_password(const std::string& service,
+                                const std::string& account,
+                                const std::string& password,
+                                std::string* errStr)
     {
         GError* error = NULL;
 
@@ -49,10 +49,10 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_RESULT GetPassword(const std::string& service,
-                               const std::string& account,
-                               std::string* password,
-                               std::string* errStr)
+    LIBCRED_RESULT get_password(const std::string& service,
+                                const std::string& account,
+                                std::string* password,
+                                std::string* errStr)
     {
         GError* error = NULL;
 
@@ -80,9 +80,9 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_RESULT DeletePassword(const std::string& service,
-                                  const std::string& account,
-                                  std::string* errStr)
+    LIBCRED_RESULT delete_password(const std::string& service,
+                                   const std::string& account,
+                                   std::string* errStr)
     {
         GError* error = NULL;
 
@@ -108,9 +108,9 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_RESULT FindPassword(const std::string& service,
-                                std::string* password,
-                                std::string* errStr)
+    LIBCRED_RESULT find_password(const std::string& service,
+                                 std::string* password,
+                                 std::string* errStr)
     {
         GError* error = NULL;
 
@@ -136,9 +136,9 @@ namespace libcred
         return SUCCESS;
     }
 
-    LIBCRED_RESULT FindCredentials(const std::string& service,
-                                   std::vector<Credentials>* credentials,
-                                   std::string* errStr)
+    LIBCRED_RESULT find_credentials(const std::string& service,
+                                    std::vector<Credentials>* credentials,
+                                    std::string* errStr)
     {
         GError* error = NULL;
 
