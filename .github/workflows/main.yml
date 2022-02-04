@@ -39,8 +39,5 @@ jobs:
           fi
           meson setup builddir
           ninja -C builddir
-
-      - name: Run
-        shell: bash -l {0}
-        run: |
+          ninja test
           ./builddir/ex1
