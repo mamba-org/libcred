@@ -24,7 +24,6 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt install -y gnome-keyring dbus-x11
-          echo 'somerandompass' | gnome-keyring-daemon --unlock
 
       - name: Install mamba
         uses: mamba-org/provision-with-micromamba@main
@@ -36,6 +35,7 @@ jobs:
         run: |
           if [[ ${{ matrix.os }} == 'ubuntu-latest' ]]; then
             export $(dbus-launch)
+            export $(echo 'somerandompass' | gnome-keyring-daemon --unlock)
           fi
           meson setup builddir
           cd builddir
