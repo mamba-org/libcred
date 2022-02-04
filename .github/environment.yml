@@ -1,0 +1,7 @@
+name: buildenv
+channels:
+- conda-forge
+dependencies:
+  - meson
+  - ninja
+  - sel(linux): 
