@@ -106,16 +106,4 @@ main(int argc, char** argv)
 {
     // Run tests
     all_tests();
-
-    // // Watch for errors
-    // if (result != 0) {
-    //     std::cerr << result << std::endl;
-    // }
-    // else {
-    //     std::cout << "All tests passed" << std::endl;
-    // }
-    // std::cout << "Tests run: " << tests_run << std::endl;
-
-    // Check result
-    // return result != 0;
 }

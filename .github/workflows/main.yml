@@ -38,6 +38,7 @@ jobs:
             export $(dbus-launch)
           fi
           meson setup builddir
-          ninja -C builddir
+          cd builddir
+          ninja
           ninja test
-          ./builddir/ex1
+          ./ex1
