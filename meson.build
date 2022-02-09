@@ -54,6 +54,8 @@ if host_machine.system() == 'windows'
                 )
 endif
 
+install_headers('include/libcred.hpp')
+
 executable('ex1', ['example/ex1.cpp'], link_with: credhelperlib, include_directories: ['include'])
 executable('ex2', ['example/ex2.cpp'], link_with: credhelperlib, include_directories: ['include'])
 
